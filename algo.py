@@ -4,7 +4,7 @@ import numpy as np
 
 st.title('The ultimate visualization experience')
 
-DATE_COLUMN = 'Series 1'
+DATE_COLUMN = 'Series1'
 DATA_URL = ('./dat.csv')
 
 @st.cache
