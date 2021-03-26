@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-
+import altair as alt
 st.title('The ultimate visualization experience')
 
 DATE_COLUMN = 'Series1'
@@ -23,6 +23,15 @@ if st.checkbox('Show raw data'):
 st.subheader('Some barcharts')
 hist_values = np.histogram(data[DATE_COLUMN], bins=10)[0]
 st.bar_chart(hist_values)
+
+st.subheader('Some linecharts')
+st.line_chart(data, columns=['Series1'])
+st.area_chart(data, columns=['Series1'])
+
+st.write("Other possibilites with data")
+df1 = pd.DataFrame(np.random.randn(200, 3),columns=['a', 'b', 'c'])
+c = alt.Chart(df1).mark_circle().encode(x='a', y='b', size='c', color='c', tooltip=['a', 'b', 'c'])
+st.altair_chart(c, use_container_width=True)
 
 #Some number in the range 0-23
 # hour_to_filter = st.slider('hour', 0, 23, 17)
