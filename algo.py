@@ -20,9 +20,9 @@ if st.checkbox('Show raw data'):
     st.subheader('Raw data')
     st.write(data)
 
- st.subheader('Some barcharts')
- hist_values = np.histogram(data[DATE_COLUMN], bins=10)[0]
- st.bar_chart(hist_values)
+st.subheader('Some barcharts')
+hist_values = np.histogram(data[DATE_COLUMN], bins=10)[0]
+st.bar_chart(hist_values)
 
 #Some number in the range 0-23
 # hour_to_filter = st.slider('hour', 0, 23, 17)
