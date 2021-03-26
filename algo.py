@@ -25,8 +25,8 @@ hist_values = np.histogram(data[DATE_COLUMN], bins=10)[0]
 st.bar_chart(hist_values)
 
 st.subheader('Some linecharts')
-st.line_chart(data, columns=['Series1'])
-st.area_chart(data, columns=['Series1'])
+st.line_chart(data)
+st.area_chart(data)
 
 st.write("Other possibilites with data")
 df1 = pd.DataFrame(np.random.randn(200, 3),columns=['a', 'b', 'c'])
