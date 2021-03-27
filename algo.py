@@ -28,10 +28,9 @@ st.subheader('Some linecharts')
 st.line_chart(data)
 st.area_chart(data)
 
-df = pd.DataFrame(data,columns=['Series1', 'b', 'c'])
-c = alt.Chart(df).mark_circle().encode(x='a', y='b', size='c', color='c', tooltip=['a', 'b', 'c'])
+df1 = pd.DataFrame( np.random.randn(200, 3), columns=['a', 'b', 'c'])
+c = alt.Chart(df1).mark_circle().encode( x='a', y='b', size='c', color='c', tooltip=['a', 'b', 'c'])
 st.altair_chart(c, use_container_width=True)
-
 #Some number in the range 0-23
 # hour_to_filter = st.slider('hour', 0, 23, 17)
 # filtered_data = data[data[DATE_COLUMN].dt.hour == hour_to_filter]
