@@ -12,9 +12,6 @@ DATA_URL = ('./dat.csv')
 
 @st.cache
 def load_data(nrows):
-
- st.write(f"""### Loaded **{rows}** rows""")
-
     data = df = pd.read_csv(DATA_URL,nrows=nrows) 
     return data
 
