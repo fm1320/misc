@@ -15,7 +15,7 @@ def load_data(nrows):
     return data
 
 data_load_state = st.text('Loading data...')
-data = load_data(300)
+data = load_data(1000)
 data_load_state.text("Done!")
 
 
@@ -33,7 +33,7 @@ if st.checkbox('Show raw data'):
     st.write(data)
 
 st.subheader('Some barcharts')
-hist_values = np.histogram(data, bins=300)[0]
+hist_values = np.histogram(data, bins=50)[0]
 st.bar_chart(hist_values)
 
 st.subheader('Some linecharts')
