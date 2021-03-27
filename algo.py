@@ -22,7 +22,7 @@ st.sidebar.write("""
 """)
 
 data_load_state = st.text('Loading data...')
-rows = st.sidebar.slider("No. of rows ", 50, 100, 500, 1000, 2000)
+rows = st.sidebar.slider("No. of rows ", 50, 100, 500, 1000)
 data = load_data(rows)
 
 st.write(f"""
