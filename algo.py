@@ -13,7 +13,7 @@ def load_data(nrows):
     return data
 
 data_load_state = st.text('Loading data...')
-data = load_data(100)
+data = load_data(500)
 data_load_state.text("Done! (using st.cache)")
 
 if st.checkbox('Show raw data'):
@@ -21,12 +21,12 @@ if st.checkbox('Show raw data'):
     st.write(data)
 
 st.subheader('Some barcharts')
-hist_values = np.histogram(data[DATE_COLUMN], bins=10)[0]
+hist_values = np.histogram(data, bins=10)[0]
 st.bar_chart(hist_values)
 
 st.subheader('Some linecharts')
-st.line_chart(data, columns=['Series1'])
-st.area_chart(data, columns=['Series1'])
+st.line_chart(data)
+st.area_chart(data)
 
 df = pd.DataFrame(data,columns=['Series1', 'b', 'c'])
 c = alt.Chart(df).mark_circle().encode(x='a', y='b', size='c', color='c', tooltip=['a', 'b', 'c'])
