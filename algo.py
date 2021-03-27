@@ -12,31 +12,25 @@ DATA_URL = ('./dat.csv')
 
 @st.cache
 def load_data(nrows):
+
+ st.write(f"""### Loaded **{rows}** rows""")
+
     data = df = pd.read_csv(DATA_URL,nrows=nrows) 
     return data
 
-
-# past `x` days slider and display
-st.sidebar.write("""
-## Select the number of rows
-""")
-
 data_load_state = st.text('Loading data...')
-rows = st.sidebar.slider("No. of rows ", 50, 100, 500, 1000)
-data = load_data(rows)
-
-st.write(f"""
-### Loaded **{rows}** rows
-""")
-
+data = load_data(500)
 data_load_state.text("Done! (using st.cache)")
 
 if st.checkbox('Show raw data'):
     st.subheader('Raw data')
     st.write(data)
 
+bins_slide = st.sidebar.slider("Graph width ", 5, 10, 20)
+
+
 st.subheader('Some barcharts')
-hist_values = np.histogram(data[DATE_COLUMN], bins=10)[0]
+hist_values = np.histogram(data[DATE_COLUMN], bins=bins_slide)[0]
 st.bar_chart(hist_values)
 
 st.subheader('Some linecharts')
