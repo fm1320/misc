@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import altair as alt
+from pandas_profiling import ProfileReport
+from streamlit_pandas_profiling import st_profile_report
 st.title('The ultimate visualization experience')
 
 DATE_COLUMN = 'Series1'
@@ -13,8 +15,18 @@ def load_data(nrows):
     return data
 
 data_load_state = st.text('Loading data...')
-data = load_data(200)
+data = load_data(300)
 data_load_state.text("Done! (using st.cache)")
+
+
+pr = ProfileReport(data, explorative=True)
+st.write('---')
+st.header('**Pandas Profiling Report**')
+st_profile_report(pr)
+
+
+
+
 
 if st.checkbox('Show raw data'):
     st.subheader('Raw data')
