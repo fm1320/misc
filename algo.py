@@ -16,7 +16,7 @@ def load_data(nrows):
 
 data_load_state = st.text('Loading data...')
 data = load_data(300)
-data_load_state.text("Done! (using st.cache)")
+data_load_state.text("Done!")
 
 
 pr = ProfileReport(data, explorative=True)
@@ -33,7 +33,7 @@ if st.checkbox('Show raw data'):
     st.write(data)
 
 st.subheader('Some barcharts')
-hist_values = np.histogram(data, bins=10)[0]
+hist_values = np.histogram(data, bins=300)[0]
 st.bar_chart(hist_values)
 
 st.subheader('Some linecharts')
